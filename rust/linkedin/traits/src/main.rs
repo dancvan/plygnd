@@ -1,16 +1,24 @@
-fn sum_boxes<T: std::ops::Add<Output=T>>(a:Box<T>, b:Box<T>) -> Box<T> {
-	Box::new(*a + *b)
+use std::fmt;
+
+struct Satellite {
+	name: String, 
+	velocity: f64 //miles per second
 }
 
+trait Description {
+    fn describe(&self) -> String;
+}
+   
+impl Description for Satellite {
+    fn describe(&self) -> String {
+        format!("the {} flying at {} miles per second!", self.name, self.velocity)
+    }
+}
 
 fn main() {
-	let one = Box::new(1);
-	let two = Box::new(2);
-	assert_eq!(*sum_boxes(one,two), 3); 
-
-	let pi = Box::new(3.14159); 
-	let e = Box::new(2.71828);
-	assert_eq!(*sum_boxes(pi,e), 5.85987); 
-
-	println!("Tests passed!");
+	let hubble = Satellite {
+		name: String::from("Hubble Telescope"), 
+		velocity: 4.72
+	};
+	println!("hubble is {}", hubble.describe());
 }
