@@ -1,0 +1,2 @@
+0	Mirror (R = -200 mm)
+150	Mirror (R = -200 mm)
