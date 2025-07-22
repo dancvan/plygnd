@@ -21,5 +21,6 @@ pub fn build(b: *std.Build) void {
     exe.addIncludePath(b.path("./include"));
  
     const run_cmd = b.addRunArtifact(exe);
+
     b.step("run", "Run the program").dependOn(&run_cmd.step); 
 }
